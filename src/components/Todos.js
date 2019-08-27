@@ -1,11 +1,12 @@
 import React, { Component } from "react";
 import TodoItem from "./TodoItem";
 
+
 class Todos extends Component {
   render() {
-    const rows = this.props.todoItems.map(item => {
+    const rows = this.props.todoItems.map((item, index) => {
       return (
-        <tr>
+        <tr key={index}>
           <TodoItem
             key={item.id}
             item={item}

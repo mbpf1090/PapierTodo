@@ -11,11 +11,9 @@ ReactDOM.render(
     <Router>
             <FirebaseContext.Provider value={new Firebase()}>
                 <div>
-                    <switch>
                     <Route exact path={ROUTES.HOME} component={App}/>
                     <Route path={ROUTES.SIGN_UP} component={SignUp}/>
                     <Route path={ROUTES.SIGN_IN} component={SignIn}/>
-                    </switch>
                 </div>
         </FirebaseContext.Provider>
     </Router>

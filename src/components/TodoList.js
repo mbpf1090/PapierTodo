@@ -4,6 +4,7 @@ import TodoInput from "./TodoInput";
 import Modal from "./Modal";
 import uuid from "uuid";
 import "../styles.css";
+import EmptyTodos from "./EmptyTodos";
 
 class TodoTable extends Component {
   constructor(props) {
@@ -81,16 +82,7 @@ class TodoTable extends Component {
                     deleteTodo={this.deleteTodo}
                     toggleModal={this.toggleModal}
                   />
-                  <tr>
-                    <td />
-                    <td />
-                    <td />
-                  </tr>
-                  <tr>
-                    <td className="last-td" />
-                    <td className="last-td" />
-                    <td className="last-td" />
-                  </tr>
+                  <EmptyTodos/>
                 </tbody>
               </table>
             </div>
