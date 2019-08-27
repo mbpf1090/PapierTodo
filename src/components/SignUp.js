@@ -12,12 +12,14 @@ const INITIAL_STATE = {
 };
 
 const SignUpPage = () => (
-  <div>
-    <h1>SignUp</h1>
-    <FirebaseContext.Consumer>
-        {firebase => <SignUpForm firebase={firebase}/>}
-    </FirebaseContext.Consumer>
-  </div>
+  <div className="card" style={{marginTop: "10%"}}>
+      <div className="container" >
+        <h1>SignUp</h1>
+          <FirebaseContext.Consumer>
+            {firebase => <SignUpForm firebase={firebase}/>}
+          </FirebaseContext.Consumer>
+      </div>
+    </div>
 );
 
 class SignUpFormBase extends Component {
@@ -67,6 +69,7 @@ class SignUpFormBase extends Component {
           onChange={this.onChange}
           type="text"
           placeholder="Full Name"
+          style={{display: "block", marginLeft: "auto", marginRight: "auto", marginTop: "10px", marginBottom: "10px"}}
         />
         <input
           name="email"
@@ -74,6 +77,7 @@ class SignUpFormBase extends Component {
           onChange={this.onChange}
           type="text"
           placeholder="Email Address"
+          style={{display: "block", marginLeft: "auto", marginRight: "auto", marginTop: "10px", marginBottom: "10px"}}
         />
         <input
           name="passwordOne"
@@ -81,6 +85,7 @@ class SignUpFormBase extends Component {
           onChange={this.onChange}
           type="password"
           placeholder="Password"
+          style={{display: "block", marginLeft: "auto", marginRight: "auto", marginTop: "10px", marginBottom: "10px"}}
         />
         <input
           name="passwordTwo"
@@ -88,8 +93,14 @@ class SignUpFormBase extends Component {
           onChange={this.onChange}
           type="password"
           placeholder="Confirm Password"
+          style={{display: "block", marginLeft: "auto", marginRight: "auto", marginTop: "10px", marginBottom: "10px"}}
         />
-        <button disabled={isInvalid} type="submit">Sign Up</button>
+        <button
+          disabled={isInvalid}
+          type="submit"
+          style={{display: "block", marginLeft: "auto", marginRight: "auto", marginTop: "10px", marginBottom: "10px"}}
+          >
+            Sign Up</button>
         {error && <p>{error.message}</p>}
       </form>
     );

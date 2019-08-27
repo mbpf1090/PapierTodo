@@ -3,14 +3,17 @@ import { withRouter } from 'react-router-dom';
 import { SignUpLink } from './SignUp';
 import { FirebaseContext } from './Firebase';
 import * as ROUTES from '../constants/routes';
+import "../styles.css";
 
 const SignInPage = () => (
-  <div>
-    <h1>SignIn</h1>
-    <FirebaseContext.Consumer>
-        {firebase => <SignInForm firebase={firebase}/>}
-    </FirebaseContext.Consumer>
-    <SignUpLink />
+    <div className="card" style={{marginTop: "10%"}}>
+        <div className="container" >
+            <h1>Sign In</h1>
+            <FirebaseContext.Consumer>
+                {firebase => <SignInForm firebase={firebase}/>}
+            </FirebaseContext.Consumer>
+            <SignUpLink />
+        </div>
   </div>
 );
 
@@ -49,26 +52,34 @@ class SignInFormBase extends Component {
     const isInvalid = password === '' || email === '';
 
     return (
-      <form onSubmit={this.onSubmit}>
-        <input
-          name="email"
-          value={email}
-          onChange={this.onChange}
-          type="text"
-          placeholder="Email Address"
-        />
-        <input
-          name="password"
-          value={password}
-          onChange={this.onChange}
-          type="password"
-          placeholder="Password"
-        />
-        <button disabled={isInvalid} type="submit">
-          Sign In
-        </button>
-        {error && <p>{error.message}</p>}
-      </form>
+        <form onSubmit={this.onSubmit}>
+            <input
+                name="email"
+                value={email}
+                onChange={this.onChange}
+                type="text"
+                placeholder="Email Address"
+                style={{display: "block", marginLeft: "auto", marginRight: "auto", marginTop: "10px", marginBottom: "10px"}}
+            />
+            <input
+                name="password"
+                value={password}
+                onChange={this.onChange}
+                type="password"
+                placeholder="Password"
+                style={{display: "block", marginLeft: "auto", marginRight: "auto", marginTop: "10px", marginBottom: "10px"}}
+
+            />
+            <button
+                disabled={isInvalid}
+                type="submit"
+                style={{display: "block", marginLeft: "auto", marginRight: "auto", marginTop: "10px", marginBottom: "10px"}}
+
+            >
+                Sign In
+            </button>
+            {error && <p>{error.message}</p>}
+        </form>
     );
   }
 }
