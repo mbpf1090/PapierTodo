@@ -1,31 +1,33 @@
 {
-  "name": "papiertodo",
-  "version": "0.1.0",
-  "private": true,
+  "name": "papiertodos",
+  "version": "1.0.0",
+  "description": "Simple Todo App based on https://dribbble.com/shots/942730-Todo-List-for-KMB",
+  "keywords": [],
+  "main": "src/index.js",
   "dependencies": {
-    "react": "^16.9.0",
-    "react-dom": "^16.9.0",
-    "react-scripts": "3.1.1"
+    "@fortawesome/fontawesome-svg-core": "1.2.22",
+    "@fortawesome/free-solid-svg-icons": "5.10.2",
+    "@fortawesome/react-fontawesome": "0.1.4",
+    "firebase": "^6.4.2",
+    "react": "16.8.6",
+    "react-dom": "16.8.6",
+    "react-router-dom": "^5.0.1",
+    "react-scripts": "3.0.1",
+    "uuid": "3.3.3"
+  },
+  "devDependencies": {
+    "typescript": "3.3.3"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test",
+    "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
   },
-  "eslintConfig": {
-    "extends": "react-app"
-  },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
-  }
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not ie <= 11",
+    "not op_mini all"
+  ]
 }
