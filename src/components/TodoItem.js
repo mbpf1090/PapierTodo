@@ -34,28 +34,30 @@ class TodoItem extends Component {
 
   render() {
     const { item } = this.props;
-    return [
-      <td>
-        <button className="edit-button" onClick={this.toggleDone}>
-          {this.setDoneIcon()}
-        </button>
-      </td>,
-      <td style={this.setStyle()}>{item.title}</td>,
-      <td>
-        <button
-          className="edit-button"
-          onClick={this.props.deleteTodo.bind(this, item.id)}
-        >
-          <FontAwesomeIcon icon={faComment} />
-        </button>
-        <button
-          className="edit-button"
-          onClick={this.props.toggleModal.bind(this, item.id)}
-        >
-          <FontAwesomeIcon icon={faEdit} />
-        </button>
-      </td>
-    ];
+    return (
+      <React.Fragment>
+        <td>
+          <button className="edit-button" onClick={this.toggleDone}>
+            {this.setDoneIcon()}
+          </button>
+        </td>
+        <td style={this.setStyle()}>{item.title}</td>
+        <td>
+          <button
+            className="edit-button"
+            onClick={this.props.deleteTodo.bind(this, item.id)}
+          >
+            <FontAwesomeIcon icon={faComment} />
+          </button>
+          <button
+            className="edit-button"
+            onClick={this.props.toggleModal.bind(this, item.id)}
+          >
+            <FontAwesomeIcon icon={faEdit} />
+          </button>
+        </td>
+      </React.Fragment>)
+
   }
 }
 
