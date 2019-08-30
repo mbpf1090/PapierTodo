@@ -2,8 +2,8 @@ import React from "react";
 import ReactDOM from "react-dom";
 import App from "./App";
 import { BrowserRouter as Router, Route } from "react-router-dom";
-import SignUp from "./components/SignUp";
-import SignIn from "./components/SignIn";
+import SignUp from "./components/signup/SignUp";
+import SignIn from "./components/signin/SignIn";
 import * as ROUTES from "./constants/routes";
 import Firebase, { FirebaseContext } from "./components/Firebase"
 

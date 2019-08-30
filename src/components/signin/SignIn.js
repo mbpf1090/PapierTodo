@@ -1,14 +1,14 @@
 import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
-import { SignUpLink } from './SignUp';
-import { FirebaseContext } from './Firebase';
-import * as ROUTES from '../constants/routes';
-import "../styles.css";
+import { SignUpLink } from '../signup/SignUp';
+import { FirebaseContext } from '../Firebase';
+import * as ROUTES from '../../constants/routes';
+import "./styles.css";
 
 const SignInPage = () => (
-    <div className="card" style={{marginTop: "10%"}}>
-        <div className="container" >
-            <h1>Sign In</h1>
+    <div className="cardSign">
+        <div className="containerSign" >
+            <h1 classname="headerSign">Sign In</h1>
             <FirebaseContext.Consumer>
                 {firebase => <SignInForm firebase={firebase}/>}
             </FirebaseContext.Consumer>
@@ -59,7 +59,7 @@ class SignInFormBase extends Component {
                 onChange={this.onChange}
                 type="text"
                 placeholder="Email Address"
-                style={{display: "block", marginLeft: "auto", marginRight: "auto", marginTop: "10px", marginBottom: "10px"}}
+                className="centeredSign"
             />
             <input
                 name="password"
@@ -67,14 +67,12 @@ class SignInFormBase extends Component {
                 onChange={this.onChange}
                 type="password"
                 placeholder="Password"
-                style={{display: "block", marginLeft: "auto", marginRight: "auto", marginTop: "10px", marginBottom: "10px"}}
-
+                className="centeredSign"
             />
             <button
                 disabled={isInvalid}
                 type="submit"
-                style={{display: "block", marginLeft: "auto", marginRight: "auto", marginTop: "10px", marginBottom: "10px"}}
-
+                className="btncenteredSign"
             >
                 Sign In
             </button>

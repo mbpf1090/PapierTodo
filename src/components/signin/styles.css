@@ -1,0 +1,56 @@
+.cardSign {
+    /* Add shadows to create the "card" effect */
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    transition: 0.3s;
+    margin-top: 10%;
+    margin-left: auto;
+    margin-right: auto;
+    width: 75%;
+    background-color: #ffff99;
+    border: 1px solid gray;
+    min-width: 375px;
+    max-width: 540px;
+  }
+  
+  /* On mouse-over, add a deeper shadow */
+  .cardSign:hover {
+    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+  }
+
+  .containerSign {
+    padding: 0px 0px 0px 0px;
+  }
+
+  .centeredSign {
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+      margin-top: 20px;
+      margin-bottom: 20px;
+      border-bottom: 1px solid;
+      border-bottom-color: rgb(42, 185, 252);
+      background-color: transparent;
+  }
+
+  .btncenteredSign {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border: 1px solid transparent;
+    background-color: transparent;
+    outline: 0;
+    cursor: pointer;
+    color: #a8a7a7;
+    
+  }
+
+  .headingSign {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    margin-top: 30px;
+  }
+
