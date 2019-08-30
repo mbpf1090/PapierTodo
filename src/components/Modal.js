@@ -8,7 +8,7 @@ class Modal extends Component {
 
   render() {
     console.log(this.props);
-    const { title, done } = this.props.selectedTodo;
+    const { title } = this.props.selectedTodo;
     return (
       <div className={"modal display-block"}>
         <section className="modal-main">

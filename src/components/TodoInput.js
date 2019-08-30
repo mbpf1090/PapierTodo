@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import uuid from "uuid";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlus } from "@fortawesome/free-solid-svg-icons";
 import "../styles.css";
@@ -18,12 +17,11 @@ class TodoInput extends Component {
   }
 
   handleSubmit(event) {
-    const id = uuid.v1();
     const { value } = this.state;
     if (value === "") {
       return;
     }
-    this.props.addTodo({ title: value, id: id, done: false });
+    this.props.addTodo({ title: value, done: false });
     this.setState({ value: "" });
     event.preventDefault();
   }

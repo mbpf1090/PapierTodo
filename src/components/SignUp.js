@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { Link, withRouter } from 'react-router-dom';
 import * as ROUTES from '../constants/routes';
 import { FirebaseContext } from "./Firebase";
+//import { auth } from 'firebase';
+
 
 const INITIAL_STATE = {
     username: '',
@@ -28,15 +30,26 @@ class SignUpFormBase extends Component {
     this.state = {...INITIAL_STATE};
   }
 
+  
+
   onSubmit = event => {
-    const { username, email, passwordOne } = this.state;
+    const { email, passwordOne } = this.state;
     this.props.firebase
       .doCreateUserWithEmailAndPassword(email, passwordOne)
-      .then(authUser => {
+      .then(() => {
         this.setState({ ...INITIAL_STATE });
         this.props.history.push(ROUTES.HOME);
       })
+      .then(() => {
+        this.props.firebase.doAddUserToDB(email)
+          .catch(error => {
+            console.log(error);
+            this.setState({ error })
+          })
+      }
+        )
       .catch(error => {
+        console.log(error)
         this.setState({ error });
       });
     event.preventDefault();

@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import Todos from "./Todos";
 import TodoInput from "./TodoInput";
 import Modal from "./Modal";
-import uuid from "uuid";
 import "../styles.css";
 import EmptyTodos from "./EmptyTodos";
 
@@ -10,26 +9,39 @@ class TodoTable extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      todos: [
-        { id: uuid.v1(), title: "Take out garbage", done: false },
-        { id: uuid.v1(), title: "Buy more curry from Japan", done: false },
-        { id: uuid.v1(), title: "Milk the goose!", done: false }
-      ],
+      todos: [],
       showModal: false,
       selectedTodo: "",
       authUser: null,
     };
 }
 
+  componentDidMount() {
+    this.getTodos(this.props.user);
+  }
+
+  getTodos = (userEmail) => {
+    this.props.firebase.getTodosFromDB(userEmail)
+      .then(snapshot => {
+        snapshot.forEach(doc => {
+          this.setState({todos: [...this.state.todos, { id: doc.id, title: doc.data().title, done: doc.data().done },]})
+        });
+    });
+  }
 
   addTodo = item => {
     const { todos } = this.state;
-    this.setState({
-      todos: [item, ...todos]
+    this.props.firebase.addTodoToDB(this.props.user, item)
+    .then((docRef) => {
+      item.id = docRef.id;
+      this.setState({
+        todos: [item, ...todos]
+      })
     });
   };
 
   toggleDone = id => {
+    this.props.firebase.toggleDoneInDB(this.props.user, id);
     this.setState({
       todos: this.state.todos.map(item => {
         if (item.id === id) {
@@ -41,17 +53,18 @@ class TodoTable extends Component {
   };
 
   deleteTodo = id => {
+    this.props.firebase.removeTodoFromDB(this.props.user, id);
     this.setState({
       todos: this.state.todos.filter(todo => {
         return todo.id !== id;
       })
     });
+    
   };
 
   toggleModal = id => {
     this.setState({ showModal: !this.state.showModal });
     this.setState({ selectedTodo: id });
-    console.log(this.state.selectedTodo);
   };
 
   selectedTodo = () => {
