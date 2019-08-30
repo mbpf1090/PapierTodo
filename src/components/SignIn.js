@@ -34,18 +34,6 @@ class SignInFormBase extends Component {
     this.props.firebase
         .doSignInWithEmailAndPassword(email, password)
         .then(() => {
-          this.props.firebase
-            .getTodosFromDB(email)
-            .then(snapshot => {
-                snapshot.forEach(doc => {
-                  console.log(doc.id, '=>', doc.data());
-                });
-              })
-            .catch(err => {
-                console.log('Error getting documents', err);
-              });
-            })
-        .then(() => {
             this.setState({ ...INITIAL_STATE });
             this.props.history.push({ pathname: ROUTES.HOME, state: { user: email }});
             })
