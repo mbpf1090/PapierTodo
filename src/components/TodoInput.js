@@ -45,6 +45,7 @@ class TodoInput extends Component {
             placeholder="Enter a Todo..."
             value={this.state.value}
             onChange={this.handleChange}
+            style={{width: "100%"}}
           />
         </td>
         <td />

@@ -17,7 +17,19 @@ class TodoTable extends Component {
 }
 
   componentDidMount() {
-    this.getTodos(this.props.user);
+    this.unsubscribe = this.props.firebase.getTodosFromDB(this.props.user)
+      .onSnapshot(snapshot => {
+        let todos = [];
+
+        snapshot.forEach(doc => {
+          todos.push({ id: doc.id, title: doc.data().title, done: doc.data().done })
+          });
+          this.setState({todos: todos})
+        });
+  }
+
+  componentWillUnmount() {
+    this.unsubscribe();
   }
 
   getTodos = (userEmail) => {

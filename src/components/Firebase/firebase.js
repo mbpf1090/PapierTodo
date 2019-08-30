@@ -34,7 +34,7 @@ const config = {
     
     doAddUserToDB = email => this.db.collection("User").doc(email).set({email: email});
 
-    getTodosFromDB = email => this.db.collection("Todos").doc(email).collection("Todos").get();
+    getTodosFromDB = email => this.db.collection("Todos").doc(email).collection("Todos");
 
     addTodoToDB = (email, todo) => this.db.collection("Todos").doc(email).collection("Todos").add({
       title: todo.title,
