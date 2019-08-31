@@ -6,18 +6,16 @@ import {
   faSignOutAlt
 } from "@fortawesome/free-solid-svg-icons";
 
-const firebase = require("firebase");
 
 class Header extends Component {
 
-
   signOut = () => {
-    firebase.auth().signOut();
+    this.props.firebase.doSignOut();
   }
 
   deleteTodos = () => {
     const { user } = this.props;
-    this.props.firebase.getTodosFromDB(user)
+    this.props.firebase.getTodosFromDB(user).get()
       .then(snapshot => {
         snapshot.forEach(doc => {
           this.props.firebase.removeTodoFromDB(user, doc.id);

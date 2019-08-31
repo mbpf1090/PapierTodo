@@ -42,36 +42,23 @@ class TodoTable extends Component {
   }
 
   addTodo = item => {
-    const { todos } = this.state;
+    //const { todos } = this.state;
     this.props.firebase.addTodoToDB(this.props.user, item)
-    .then((docRef) => {
-      item.id = docRef.id;
-      this.setState({
-        todos: [item, ...todos]
-      })
-    });
   };
 
+  getDoneItem = id => {
+    return this.state.todos.filter((item) => {
+      return item.id === id
+    })[0].done
+  }
+
   toggleDone = id => {
-    this.props.firebase.toggleDoneInDB(this.props.user, id);
-    this.setState({
-      todos: this.state.todos.map(item => {
-        if (item.id === id) {
-          item.done = !item.done;
-        }
-        return item;
-      })
-    });
+    const done = !this.getDoneItem(id)
+    this.props.firebase.toggleDoneInDB(this.props.user, id, done)
   };
 
   deleteTodo = id => {
     this.props.firebase.removeTodoFromDB(this.props.user, id);
-    this.setState({
-      todos: this.state.todos.filter(todo => {
-        return todo.id !== id;
-      })
-    });
-    
   };
 
   toggleModal = id => {

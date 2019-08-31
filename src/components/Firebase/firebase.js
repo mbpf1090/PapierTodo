@@ -35,7 +35,7 @@ const config = {
     doAddUserToDB = email => this.db.collection("User").doc(email).set({email: email});
 
     getTodosFromDB = email => this.db.collection("Todos").doc(email).collection("Todos");
-
+    
     addTodoToDB = (email, todo) => this.db.collection("Todos").doc(email).collection("Todos").add({
       title: todo.title,
       done: todo.done,
@@ -43,7 +43,7 @@ const config = {
 
     removeTodoFromDB = (email, id) =>  this.db.collection("Todos").doc(email).collection("Todos").doc(id).delete();
 
-    toggleDoneInDB = (email, id) => this.db.collection("Todos").doc(email).collection("Todos").doc(id).update({done: true});
+    toggleDoneInDB = (email, id, done) => this.db.collection("Todos").doc(email).collection("Todos").doc(id).update({done: done});
   }
 
 
